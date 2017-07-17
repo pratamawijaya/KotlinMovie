@@ -1,5 +1,7 @@
 package com.pratamawijaya.kotlinmovie
 
+import com.pratamawijaya.kotlinmovie.data.model.Movie
+
 /**
  * Created by pratama
  * Date : Jul - 7/17/17
@@ -7,6 +9,6 @@ package com.pratamawijaya.kotlinmovie
  */
 interface MainView {
     fun showLoading()
-    fun displayResult(result: String)
+    fun displayResult(result: List<Movie>)
     fun hideLoading()
 }

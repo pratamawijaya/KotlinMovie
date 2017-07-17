@@ -1,5 +1,6 @@
 package com.pratamawijaya.kotlinmovie.data
 
+import android.util.Log
 import java.net.URL
 
 /**
@@ -10,6 +11,7 @@ import java.net.URL
 class Request {
 
     fun getFavoriteMovie(url: String): String {
+        Log.d("tag", "url $url")
         val result = URL(url).readText()
         return result
     }
