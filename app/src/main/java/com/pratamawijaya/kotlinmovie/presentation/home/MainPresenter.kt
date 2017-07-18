@@ -1,7 +1,7 @@
-package com.pratamawijaya.kotlinmovie
+package com.pratamawijaya.kotlinmovie.presentation.home
 
 import com.google.gson.Gson
-import com.pratamawijaya.kotlinmovie.data.Request
+import com.pratamawijaya.kotlinmovie.data.MovieRepository
 import com.pratamawijaya.kotlinmovie.data.TheMovieDBApi
 import com.pratamawijaya.kotlinmovie.data.model.response.PopularMovieResponse
 import org.jetbrains.anko.doAsync
@@ -13,14 +13,15 @@ import org.jetbrains.anko.uiThread
  * Project Name : KotlinMovie
  */
 class MainPresenter(val view: MainView,
-                    val request: Request,
+                    val movieRepository: MovieRepository,
                     val gson: Gson) {
 
-    fun getFavMovie() {
+    fun getFavMovie(page: Int) {
         view.showLoading()
         // do async
         doAsync {
-            val result = gson.fromJson(request.getFavoriteMovie(TheMovieDBApi.getPopularMovie()),
+            val result = gson.fromJson(movieRepository
+                    .getFavoriteMovie(TheMovieDBApi.getPopularMovie(page)),
                     PopularMovieResponse::class.java
             )
 

@@ -23,4 +23,7 @@ data class Movie(
         val adult: Boolean? = null,
         @SerializedName("vote_count")
         val voteCount: Int? = null
-)
+) {
+    val imdbPosterPath: String
+        get() = "http://image.tmdb.org/t/p/w342/$posterPath"
+}

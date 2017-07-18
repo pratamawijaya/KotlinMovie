@@ -1,4 +1,4 @@
-package com.pratamawijaya.kotlinmovie
+package com.pratamawijaya.kotlinmovie.presentation.home
 
 import com.pratamawijaya.kotlinmovie.data.model.Movie
 

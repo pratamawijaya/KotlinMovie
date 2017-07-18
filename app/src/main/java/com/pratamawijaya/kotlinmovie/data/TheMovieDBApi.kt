@@ -8,7 +8,7 @@ import com.pratamawijaya.kotlinmovie.BuildConfig
  * Project Name : KotlinMovie
  */
 object TheMovieDBApi {
-    fun getPopularMovie(): String {
-        return BuildConfig.THEMOVIEDB_API + "movie/popular" + "?api_key=${BuildConfig.THEMOVIEDB_KEY}"
+    fun getPopularMovie(page: Int): String {
+        return BuildConfig.THEMOVIEDB_API + "movie/popular" + "?api_key=${BuildConfig.THEMOVIEDB_KEY}" + "&page=$page"
     }
 }
