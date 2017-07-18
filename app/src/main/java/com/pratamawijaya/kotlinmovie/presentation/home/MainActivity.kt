@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import com.pratamawijaya.kotlinmovie.R
 import com.pratamawijaya.kotlinmovie.data.MovieRepository
 import com.pratamawijaya.kotlinmovie.data.model.Movie
+import com.pratamawijaya.kotlinmovie.presentation.utils.InfiniteScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -22,8 +23,18 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
 
         adapter = MainAdapter(this, movies)
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        val gridLayout = GridLayoutManager(this, 2)
+        recyclerView.layoutManager = gridLayout
         recyclerView.adapter = adapter
+
+        recyclerView.addOnScrollListener(
+                InfiniteScrollListener(
+                        {
+                            page++
+                            presenter.getFavMovie(page)
+                        },
+                        gridLayout)
+        )
 
         val request = MovieRepository()
         val gson = Gson()
